@@ -7,15 +7,13 @@ package detector;
  **/
 public class MutantDetector implements Detector{
 
-    public static final String ALLOWED_CHARS = "ATCG";
-    public static final Integer SPACES_TO_CHECK = 3;
+    private static final String ALLOWED_CHARS = "ATCG";
+    private static final Integer SPACES_TO_CHECK = 3;
 
     @Override
     public boolean isMutant(String[] dna) {
 
-        if (dna == null || dna.length == 0 || !isSquareMatrix(dna)) {
-            throw new IllegalArgumentException();
-        }
+        validateDna(dna);
 
         final Integer rows = dna.length;
         final Integer columns = dna[0].length();
@@ -25,7 +23,7 @@ public class MutantDetector implements Detector{
         for (Integer r = 0; r < rows; r++) {
             for (Integer c = 0; c < columns; c++){
                 Character actualChar = dna[r].charAt(c);
-                if(!isValidChar(actualChar)) throw new IllegalArgumentException();
+                if(!isValidChar(actualChar)) throw new IllegalArgumentException("Illegal characters in DNA sequence");
 
                 // If we already met our condition, we skip the detection steps, we just
                 // keep iterating for character validations.
@@ -47,14 +45,24 @@ public class MutantDetector implements Detector{
                         matches++;
                     }
                 }
-
-
             }
         }
 
         // We let the double for finish so the isValidChar function is called on every position.
         // This way we compute and validate the matrix on one iteration.
         return matches >= 2;
+    }
+
+    private void validateDna(String[] dna) {
+        if (dna == null || dna.length == 0) {
+            throw new IllegalArgumentException("Null DNA");
+        }
+        if(!isSquareMatrix(dna)) {
+            throw new IllegalArgumentException("DNA sequence is not an NxN matrix");
+        }
+        if (dna.length < SPACES_TO_CHECK + 1) {
+            throw new IllegalArgumentException("DNA sequence to small, must be at least: " + (SPACES_TO_CHECK + 1) + "x" + (SPACES_TO_CHECK + 1));
+        }
     }
 
     private Boolean isSquareMatrix(String[] dna) {

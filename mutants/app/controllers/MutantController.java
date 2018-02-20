@@ -39,10 +39,13 @@ public class MutantController extends Controller {
 
         Dna dna = dnaForm.get();
 
-        System.out.println(dna);
+        return this.mutantService.isMutant(dna).thenApplyAsync(mutantResult -> {
 
-        return this.mutantService.isMutant(null).thenApplyAsync(mutantResult -> {
-            return ok(mutantResult.toString());
+            if(mutantResult) {
+                return ok();
+            }else {
+                return forbidden();
+            }
         }, httpExecutionContext.current());
 
     }
