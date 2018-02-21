@@ -1,11 +1,13 @@
 package models;
 
+import io.ebean.Model;
+
 /**
  * @Author Maximiliano Schultheis
  * @Date 19/02/18
  * @Since Vx.y.z
  **/
-public class Dna {
+public class Dna extends Model{
 
     private String[] dna;
 
