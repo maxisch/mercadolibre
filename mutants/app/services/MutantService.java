@@ -2,10 +2,12 @@ package services;
 
 import detector.Detector;
 import detector.MutantDetector;
+import dtos.DnaDTO;
 import models.Dna;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.concurrent.HttpExecutionContext;
+import repository.DnaRepository;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletableFuture;
@@ -21,17 +23,24 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 public class MutantService {
 
     private static final Logger logger = LoggerFactory.getLogger(MutantService.class);
+    private final DnaRepository dnaRepository;
 
+    @Inject
+    public MutantService(DnaRepository dnaRepository) {
+        this.dnaRepository = dnaRepository;
+    }
 
-    public CompletableFuture<Boolean> isMutant(Dna dna) {
+    public CompletableFuture<Boolean> isMutant(DnaDTO dna) {
+
         return supplyAsync(() -> {
             Detector md = new MutantDetector();
             return md.isMutant(dna.getDna());
-        }).handle((ok, ex) -> {
+        }).thenCompose(b -> dnaRepository.insert(dna.toModel(), b)
+        ).handle((ok, ex) -> {
             if (ok != null) {
                 return ok;
             } else {
-                logger.error("Error on MutantDetection: " + ex);
+                logger.error("MutantService Error: " + ex);
                 return false;
             }
         });

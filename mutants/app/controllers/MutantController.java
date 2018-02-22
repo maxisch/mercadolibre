@@ -1,5 +1,6 @@
 package controllers;
 
+import dtos.DnaDTO;
 import models.Dna;
 import play.data.Form;
 import play.data.FormFactory;
@@ -29,7 +30,7 @@ public class MutantController extends Controller {
     }
 
     public CompletionStage<Result> isMutant() {
-        Form<Dna> dnaForm = formFactory.form(Dna.class).bindFromRequest();
+        Form<DnaDTO> dnaForm = formFactory.form(DnaDTO.class).bindFromRequest();
 
         if (dnaForm.hasErrors()) {
             return supplyAsync(() -> {
@@ -37,7 +38,7 @@ public class MutantController extends Controller {
             }, httpExecutionContext.current());
         }
 
-        Dna dna = dnaForm.get();
+        DnaDTO dna = dnaForm.get();
 
         return this.mutantService.isMutant(dna).thenApplyAsync(mutantResult -> {
 
