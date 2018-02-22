@@ -20,11 +20,11 @@ public class MutantDetectorTest {
                                                  "TCACTG"};
 
     private final static String[] doubleVerticalDna = {"ATGCGA",
-                                                      "CGGTGC",
-                                                      "TTATGT",
-                                                      "ATAAGG",
-                                                      "CTCCTA",
-                                                      "TTACTG"};
+                                                       "CGGTGC",
+                                                       "TTATGT",
+                                                       "ATAAGG",
+                                                       "CTCCTA",
+                                                       "TTACTG"};
 
     private final static String[] doubleHorizontalDna = {"ATGCGA",
                                                          "CGGTTC",
@@ -46,6 +46,13 @@ public class MutantDetectorTest {
                                                                 "ATATGG",
                                                                 "CAATTA",
                                                                 "TTCTAT"};
+
+    private final static String[] notMutantDna = {"ATGCGA",
+                                                  "CGGTGC",
+                                                  "TTATAT",
+                                                  "ATAAGG",
+                                                  "CTCCTA",
+                                                  "TTACTG"};
 
     private final static String[] notSquareMatrix = {"ATGCGG",
                                                      "CGGT",
@@ -90,6 +97,12 @@ public class MutantDetectorTest {
     public void downAndRightAndVerticalDna() {
         MutantDetector md = new MutantDetector();
         assertTrue(md.isMutant(downAndRightAndVerticalDna));
+    }
+
+    @Test
+    public void notMutantDna() {
+        MutantDetector md = new MutantDetector();
+        assertFalse(md.isMutant(notMutantDna));
     }
 
     @Test

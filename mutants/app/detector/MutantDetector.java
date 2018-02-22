@@ -54,7 +54,7 @@ public class MutantDetector implements Detector{
     }
 
     private void validateDna(String[] dna) {
-        if (dna == null || dna.length == 0) {
+        if (dna == null) {
             throw new IllegalArgumentException("Null DNA");
         }
         if(!isSquareMatrix(dna)) {
@@ -69,7 +69,8 @@ public class MutantDetector implements Detector{
         Integer amountRows = dna.length;
 
         for (String row : dna) {
-            if (row.length() != amountRows) return false;
+            if (row.length() != amountRows)
+                return false;
         }
         return true;
     }
@@ -81,7 +82,8 @@ public class MutantDetector implements Detector{
     private Boolean checkRight(Integer r, Integer c, Character actualCharacter, String[] dna) {
         Integer i;
         for(i = c + 1; i <= c + SPACES_TO_CHECK; i++) {
-            if (!actualCharacter.equals(dna[r].charAt(i))) return false;
+            if (!actualCharacter.equals(dna[r].charAt(i)))
+                return false;
         }
         return true;
     }
@@ -89,7 +91,8 @@ public class MutantDetector implements Detector{
     private Boolean checkDown(Integer r, Integer c, Character actualCharacter, String[] dna) {
         Integer i;
         for(i = r + 1; i <= r + SPACES_TO_CHECK; i++) {
-            if (!actualCharacter.equals(dna[i].charAt(c))) return false;
+            if (!actualCharacter.equals(dna[i].charAt(c)))
+                return false;
         }
         return true;
     }
@@ -97,22 +100,20 @@ public class MutantDetector implements Detector{
     private Boolean checkDownAndRight(Integer r, Integer c, Character actualCharacter, String[] dna) {
         Integer i, j = c + 1;
         for(i = r + 1; i <= r + SPACES_TO_CHECK; i++) {
-            if (!actualCharacter.equals(dna[i].charAt(j))) return false;
-            System.out.println(dna[i].charAt(j));
+            if (!actualCharacter.equals(dna[i].charAt(j)))
+                return false;
             j++;
         }
-
         return true;
     }
 
     private Boolean checkDownAndLeft(Integer r, Integer c, Character actualCharacter, String[] dna) {
         Integer i, j = c - 1;
         for(i = r + 1; i <= r + SPACES_TO_CHECK; i++) {
-            if (!actualCharacter.equals(dna[i].charAt(j))) return false;
-            System.out.println(dna[i].charAt(j));
+            if (!actualCharacter.equals(dna[i].charAt(j)))
+                return false;
             j--;
         }
-
         return true;
     }
 }
