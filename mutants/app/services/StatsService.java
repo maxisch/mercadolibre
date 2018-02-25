@@ -1,6 +1,5 @@
 package services;
 
-import dtos.DnaDTO;
 import dtos.StatsDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,7 @@ import java.util.concurrent.CompletionStage;
 /**
  * @Author StatsService
  * @Date 24/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class StatsService {
 

@@ -12,9 +12,9 @@ import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
 /**
- * @Author StatsController
+ * @Author Maximiliano Schultheis
  * @Date 23/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class StatsController extends Controller {
 
@@ -40,5 +40,4 @@ public class StatsController extends Controller {
             }
         },httpExecutionContext.current());
     }
-
 }

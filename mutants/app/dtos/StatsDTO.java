@@ -3,9 +3,9 @@ package dtos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @Author StatsDTO
+ * @Author Maximiliano Schultheis
  * @Date 24/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class StatsDTO {
     @JsonProperty("count_mutant_dna")

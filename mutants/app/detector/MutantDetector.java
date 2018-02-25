@@ -1,9 +1,9 @@
 package detector;
 
 /**
- * @Author MutantDetector
+ * @Author Maximiliano Schultheis
  * @Date 20/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class MutantDetector implements Detector{
 

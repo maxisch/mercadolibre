@@ -3,22 +3,19 @@ package services;
 import detector.Detector;
 import detector.MutantDetector;
 import dtos.DnaDTO;
-import models.Dna;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import play.libs.concurrent.HttpExecutionContext;
 import repository.DnaRepository;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 /**
  * @Author MutantService
  * @Date 18/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class MutantService {
 

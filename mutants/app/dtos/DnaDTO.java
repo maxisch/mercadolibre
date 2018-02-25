@@ -5,7 +5,7 @@ import models.Dna;
 /**
  * @Author DnaDTO
  * @Date 21/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class DnaDTO {
     private String[] dna;

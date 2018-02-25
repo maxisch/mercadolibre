@@ -1,25 +1,21 @@
 package repository;
 
-import dtos.DnaDTO;
 import io.ebean.Ebean;
 import io.ebean.EbeanServer;
 import models.Dna;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.db.ebean.EbeanConfig;
-import services.MutantService;
-
 import javax.inject.Inject;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 /**
- * @Author DnaRepository
+ * @Author Maximiliano Schultheis
  * @Date 21/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class DnaRepository {
 

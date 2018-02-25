@@ -3,12 +3,11 @@ package detectors;
 import detector.MutantDetector;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
 
 /**
  * @Author MutantDetectorTest
  * @Date 20/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 public class MutantDetectorTest {
 

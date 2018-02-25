@@ -3,14 +3,18 @@ package models;
 import io.ebean.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @Author Maximiliano Schultheis
  * @Date 19/02/18
- * @Since Vx.y.z
+ * @Since V1.0.0
  **/
 @Entity
 public class Dna extends Model{
+
+    @Id
+    private Long id;
 
     private String dna;
 
@@ -34,5 +38,13 @@ public class Dna extends Model{
 
     public void setMutant(Boolean mutant) {
         isMutant = mutant;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
