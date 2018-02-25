@@ -1,5 +1,6 @@
 package repository;
 
+import dtos.DnaDTO;
 import io.ebean.Ebean;
 import io.ebean.EbeanServer;
 import models.Dna;
@@ -10,6 +11,7 @@ import services.MutantService;
 
 import javax.inject.Inject;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 import static java.util.concurrent.CompletableFuture.supplyAsync;
@@ -41,6 +43,17 @@ public class DnaRepository {
                     dna.save();
                 }
                 return isMutant;
+            } catch (Exception ex) {
+                logger.error("Repository Error " + ex);
+                throw ex;
+            }
+        }, executionContext);
+    }
+
+    public CompletableFuture<Integer> getCount(Boolean isMutant) {
+        return supplyAsync(() -> {
+            try {
+                return ebeanServer.find(Dna.class).where().eq("isMutant", isMutant).findCount();
             } catch (Exception ex) {
                 logger.error("Repository Error " + ex);
                 throw ex;
