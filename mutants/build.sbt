@@ -16,4 +16,4 @@ jacocoExcludes in Test := Seq(
   "controllers.javascript.*",
   "router.Routes*",
   "*.routes*"
-)
+)```
