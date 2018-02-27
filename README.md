@@ -8,7 +8,7 @@
 La problemática planteada es poder detectar mediante una API REST, si un ADN corresponde a un mutante o no. Luego poder obtener estadísticas de los resultados. Para el enunciado completo, [clickear aquí](mutants/doc/Examen%20Mercadolibre%202017%20.pdf).
 
 ## Aplicación
-La aplicación consta de dos servicios
+La aplicación consta de dos servicios:
 
 - Verificación de un ADN particular:
 
