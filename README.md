@@ -1,4 +1,6 @@
-![mercado-libre](mutants/doc/images/mercado-libre.png)
+<p align="center"> 
+  <img src="mutants/doc/images/mercado-libre.png">
+</p>
 # Examen Mercadolibre: Mutantes 
 
 ## Introducción
